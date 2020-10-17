@@ -4,16 +4,18 @@ project(tester VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-set(_GLFW_WIN32 ON)
 
 
+add_subdirectory(
+    Resources/GLEW/build/cmake
+)
 
 add_subdirectory(
     Resources/GLFW   
 )
 
 add_executable(tester main.cpp)
-target_link_libraries(tester opengl32 glfw)
+target_link_libraries(tester opengl32 glfw glew_s)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
