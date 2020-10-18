@@ -1,7 +1,7 @@
 
 #include "VertexBuffer.hpp"
 
-VertexBuffer::VertexBuffer(float* vertexBufferData, unsigned int dataSize) : m_VrtexBufferData(vertexBufferData), m_DataSize(dataSize), m_RenderID(0) {
+VertexBuffer::VertexBuffer(const void* vertexBufferData, unsigned int dataSize) : m_VrtexBufferData(vertexBufferData), m_DataSize(dataSize), m_RenderID(0) {
     glGenBuffers(1, &m_RenderID);
     glBindBuffer(GL_ARRAY_BUFFER, m_RenderID);
     glBufferData(GL_ARRAY_BUFFER, m_DataSize, m_VrtexBufferData, GL_STREAM_DRAW);

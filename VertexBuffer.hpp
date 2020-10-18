@@ -5,10 +5,10 @@ class VertexBuffer{
 private:
     unsigned int m_RenderID;
     unsigned int m_DataSize;
-    float* m_VrtexBufferData;
+    const void* m_VrtexBufferData;
 
 public:
-    VertexBuffer(float* vertexBufferData, unsigned int dataSize);
+    VertexBuffer(const void* vertexBufferData, unsigned int dataSize);
     ~VertexBuffer();
 
     void bind() const;
