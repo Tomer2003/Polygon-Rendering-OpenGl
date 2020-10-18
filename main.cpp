@@ -2,6 +2,9 @@
 #include "Resources/GLEW/include/GL/glew.h"
 #include "Resources/GLFW/include/GLFW/glfw3.h"
 #include "files_io.hpp"
+#include "VertexAttribute.hpp"
+#include "VertexArray.hpp"
+#include "shader.hpp"
 
 int main(void)
 {
@@ -31,6 +34,22 @@ int main(void)
         std::cout << "error glew does not initated!" << std::endl;
         exit(1);
     }
+
+    float buffer[] = {
+        0.0, 0.5,
+        -0.5, 0.0, 
+        0.5, 0.0,
+    };
+
+    VertexAttribute vertexAttrib;
+    vertexAttrib.addLayout<float>(2, false);
+
+    VertexArray vertexArray;
+    vertexArray.addBufferAndAttribute(buffer, sizeof(float) * 6, vertexAttrib);
+    vertexArray.bind();
+
+    Shader shader("Resources/shaders/vertex.shader", "Resources/shaders/fragment.shader");
+    shader.bind();
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))

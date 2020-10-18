@@ -22,25 +22,25 @@ public:
     void unBindLayout(unsigned int layoutNum) const;
 
     template <class Type>
-    void addLayout(unsigned int size, unsigned char normalized) {
+    void addLayout(int size, unsigned char normalized) {
     }
 
     template <>
-    void addLayout<float>(unsigned int size, unsigned char normalized){
+    void addLayout<float>(int size, unsigned char normalized){
         m_layouts.push_back({m_layoutNumCounter, size, GL_FLOAT, normalized});
         m_layoutNumCounter++;
         m_stride += sizeof(float);
     }
 
     template <>
-    void addLayout<int>(unsigned int size, unsigned char normalized){
+    void addLayout<int>(int size, unsigned char normalized){
         m_layouts.push_back({m_layoutNumCounter, size, GL_INT, normalized});
         m_layoutNumCounter++;
         m_stride += sizeof(int);
     }
 
     template <>
-    void addLayout<unsigned int>(unsigned int size, unsigned char normalized){
+    void addLayout<unsigned int>(int size, unsigned char normalized){
         m_layouts.push_back({m_layoutNumCounter, size, GL_UNSIGNED_INT, normalized});
         m_layoutNumCounter++;
         m_stride += sizeof(unsigned int);

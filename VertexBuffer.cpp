@@ -6,7 +6,6 @@ VertexBuffer::VertexBuffer(const void* vertexBufferData, unsigned int dataSize) 
     glBindBuffer(GL_ARRAY_BUFFER, m_RenderID);
     glBufferData(GL_ARRAY_BUFFER, m_DataSize, m_VrtexBufferData, GL_STREAM_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    //free(vertexBufferData); or unique_ptr
 }
 
 void VertexBuffer::bind() const {
