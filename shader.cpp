@@ -1,47 +1,47 @@
 #include "shader.hpp"
-
+#include "error_handle.hpp"
+#include "files_io.hpp"
 
 unsigned int Shader::getCompiledShader(const std::string& shaderSource, GLenum shaderType) const{
-    unsigned int shader = glCreateShader(shaderType);
+    GLCALL(unsigned int shader = glCreateShader(shaderType));
     const char* shaderSourcePtr = shaderSource.c_str();
-    glShaderSource(shader, 1, &shaderSourcePtr, nullptr);
-    
-    glCompileShader(shader);
+    GLCALL(glShaderSource(shader, 1, &shaderSourcePtr, nullptr));
+    GLCALL(glCompileShader(shader));
+
     return shader;
 }
 
-Shader::Shader(const std::string& vertexShaderSource, const std::string& fragmentShaderSource){
-    this->m_RenderID = glCreateProgram();
+Shader::Shader(const std::string& vertexShaderFileSource, const std::string& fragmentShaderFileSource){
+    GLCALL(this->m_RenderID = glCreateProgram());
+    
+    unsigned int vertexShader = getCompiledShader(getDataFile(vertexShaderFileSource), GL_VERTEX_SHADER);
+    unsigned int fragmentShader =  getCompiledShader(getDataFile(fragmentShaderFileSource), GL_FRAGMENT_SHADER);
 
-    unsigned int vertexShader = getCompiledShader(vertexShaderSource, GL_VERTEX_SHADER);
-    unsigned int fragmentShader =  getCompiledShader(vertexShaderSource, GL_FRAGMENT_SHADER);
+    GLCALL(glAttachShader(m_RenderID, vertexShader));
+    GLCALL(glAttachShader(m_RenderID, fragmentShader));
 
-    glAttachShader(m_RenderID, vertexShader);
-    glAttachShader(m_RenderID, fragmentShader);
+    GLCALL(glLinkProgram(m_RenderID));
 
-    glLinkProgram(m_RenderID);
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-    glDeleteProgram(0);
+    GLCALL(glDeleteShader(vertexShader));
+    GLCALL(glDeleteShader(fragmentShader));
 }
 
 Shader::~Shader(){
-    glDeleteProgram(m_RenderID);
+    GLCALL(glDeleteProgram(m_RenderID));
 }
 
 void Shader::bind() const{
-    glUseProgram(m_RenderID);
+    GLCALL(glUseProgram(m_RenderID));
 }
 
 void Shader::unBind() const{
-    glUseProgram(0);
+    GLCALL(glUseProgram(0));
 }
 
 int Shader::getUniformID(const std::string& uniformName) const{
-    return glGetUniformLocation(m_RenderID, uniformName.c_str());
+    GLCALL(return glGetUniformLocation(m_RenderID, uniformName.c_str()));
 }
 
 void Shader::setUniform4f(const std::string& uniformName, float v1, float v2, float v3, float v4) const{
-    glUniform4f(this->getUniformID(uniformName), v1, v2, v3, v4);
+    GLCALL(glUniform4f(this->getUniformID(uniformName), v1, v2, v3, v4));
 }

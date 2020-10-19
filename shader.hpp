@@ -7,7 +7,7 @@ private:
     unsigned int m_RenderID;
 
 public:
-    Shader(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
+    Shader(const std::string& vertexShaderFileSource, const std::string& fragmentShaderFileSource);
     ~Shader();
 
     void bind() const;

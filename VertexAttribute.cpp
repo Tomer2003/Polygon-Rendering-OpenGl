@@ -1,13 +1,14 @@
 #include "VertexAttribute.hpp"
+#include "error_handle.hpp"
 
 VertexAttribute::VertexAttribute() : m_stride(0), m_layoutNumCounter(0) {}
 
 void VertexAttribute::bindLayout(unsigned int layoutNum) const{
-    glEnableVertexAttribArray(layoutNum);
+    GLCALL(glEnableVertexAttribArray(layoutNum));
 }
 
 void VertexAttribute::unBindLayout(unsigned int layoutNum) const{
-    glDisableVertexAttribArray(layoutNum);
+    GLCALL(glDisableVertexAttribArray(layoutNum));
 }
 
 std::vector<VertexLayout> VertexAttribute::getLayouts() const{

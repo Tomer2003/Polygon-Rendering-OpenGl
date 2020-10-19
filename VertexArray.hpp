@@ -15,5 +15,5 @@ public:
     void bind() const;
     void unBind() const;
 
-    void addBufferAndAttribute(const void* vertexBufferData, unsigned int dataSize, const VertexAttribute& vertexAttribute) const;
+    void addBufferAndAttribute(const VertexBuffer& vertexBuffer, const VertexAttribute& vertexAttribute) const;
 };

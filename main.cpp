@@ -5,6 +5,8 @@
 #include "VertexAttribute.hpp"
 #include "VertexArray.hpp"
 #include "shader.hpp"
+#include "error_handle.hpp"
+#include "IndexBuffer.hpp"
 
 int main(void)
 {
@@ -35,30 +37,41 @@ int main(void)
         exit(1);
     }
 
-    float buffer[] = {
-        0.0f, 0.5f,
-        -0.5f, 0.0f, 
-        0.5f, 0.0f,
+   float buffer[] = {
+		-0.5, -0.5, 
+		-0.5, 0.5, 
+		0.5, -0.5, 
+        0.5, 0.5
+	};
+
+    unsigned int indexBufferData[] ={
+        0, 1, 2,
+        1, 2, 3
     };
 
+    VertexBuffer vertexBuffer(buffer, sizeof(float) * 2 * 4);
+
     VertexAttribute vertexAttrib;
-    vertexAttrib.addLayout<float>(2, false);
+    vertexAttrib.addLayout<float>(2);
 
     VertexArray vertexArray;
-    vertexArray.addBufferAndAttribute(buffer, sizeof(float) * 6, vertexAttrib);
+    vertexArray.addBufferAndAttribute(vertexBuffer, vertexAttrib);
     vertexArray.bind();
 
-    Shader shader("Resources/shaders/vertex.shader", "Resources/shaders/fragment.shader");
+    Shader shader("../../Resources/shaders/vertex.shader", "../../Resources/shaders/fragment.shader");
     shader.bind();
     shader.setUniform4f("colors", 0.4f, 0.2f, 0.7f, 1.0f);
 
+    IndexBuffer indexBuffer(indexBufferData, 2 * 3 * sizeof(unsigned int));
+    indexBuffer.bind();
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        //GLCALL(glDrawArrays(GL_TRIANGLES, 0, 3));
+        glDrawElements(GL_TRIANGLES, 3 * 2, GL_UNSIGNED_INT, 0);
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
