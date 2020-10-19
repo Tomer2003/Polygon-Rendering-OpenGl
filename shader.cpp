@@ -37,3 +37,11 @@ void Shader::bind() const{
 void Shader::unBind() const{
     glUseProgram(0);
 }
+
+int Shader::getUniformID(const std::string& uniformName) const{
+    return glGetUniformLocation(m_RenderID, uniformName.c_str());
+}
+
+void Shader::setUniform4f(const std::string& uniformName, float v1, float v2, float v3, float v4) const{
+    glUniform4f(this->getUniformID(uniformName), v1, v2, v3, v4);
+}

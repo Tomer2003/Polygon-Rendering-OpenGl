@@ -36,9 +36,9 @@ int main(void)
     }
 
     float buffer[] = {
-        0.0, 0.5,
-        -0.5, 0.0, 
-        0.5, 0.0,
+        0.0f, 0.5f,
+        -0.5f, 0.0f, 
+        0.5f, 0.0f,
     };
 
     VertexAttribute vertexAttrib;
@@ -50,6 +50,7 @@ int main(void)
 
     Shader shader("Resources/shaders/vertex.shader", "Resources/shaders/fragment.shader");
     shader.bind();
+    shader.setUniform4f("colors", 0.4f, 0.2f, 0.7f, 1.0f);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -57,6 +58,7 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+        glDrawArrays(GL_TRIANGLES, 0, 3);
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 

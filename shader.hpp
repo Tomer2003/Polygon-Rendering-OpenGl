@@ -13,6 +13,8 @@ public:
     void bind() const;
     void unBind() const;
 
+    void setUniform4f(const std::string& uniformName, float v1, float v2, float v3, float v4) const;
 private:
     unsigned int getCompiledShader(const std::string& shaderSource, GLenum shaderType) const;
+    int getUniformID(const std::string& uniformName) const;
 };
