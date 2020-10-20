@@ -7,6 +7,7 @@
 #include "shader.hpp"
 #include "error_handle.hpp"
 #include "IndexBuffer.hpp"
+#include "polygon_api.hpp"
 
 int main(void)
 {
@@ -37,7 +38,7 @@ int main(void)
         exit(1);
     }
 
-   float buffer[] = {
+  /* float buffer[] = {
 		-0.5, -0.5, 
 		-0.5, 0.5, 
 		0.5, -0.5, 
@@ -63,7 +64,11 @@ int main(void)
     shader.setUniform4f("colors", 0.4f, 0.2f, 0.7f, 1.0f);
 
     IndexBuffer indexBuffer(indexBufferData, 2 * 3 * sizeof(unsigned int));
-    indexBuffer.bind();
+    indexBuffer.bind();*/
+
+    Polygon polygon;
+    polygon.definePolygon(10);
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
@@ -71,7 +76,7 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
         //GLCALL(glDrawArrays(GL_TRIANGLES, 0, 3));
-        glDrawElements(GL_TRIANGLES, 3 * 2, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 3 * 10, GL_UNSIGNED_INT, 0);
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
