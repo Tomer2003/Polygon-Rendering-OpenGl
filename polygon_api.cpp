@@ -2,7 +2,7 @@
 # define M_PI 3.14159265358979323846
 #include <iostream>
 
-Polygon::Polygon(){
+Polygon::Polygon() : m_IndexBuffer(nullptr), m_VertexBuffer(nullptr){
     m_VertexArray = new VertexArray;
     m_VertexAttribute = new VertexAttribute;
     m_Shader = new Shader("../../Resources/shaders/vertex.shader", "../../Resources/shaders/fragment.shader");
