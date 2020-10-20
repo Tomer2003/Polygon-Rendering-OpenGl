@@ -17,12 +17,12 @@ void Polygon::definePolygon(unsigned int edgeNum) {
 
     buffer[0] = 0.0;
     buffer[1] = 0.0;
-    for(int edge = 0; edge < edgeNum; ++edge){
-        buffer[2 * (edge + 1)] =  cos((2 * M_PI/ edgeNum) * edge);
-        buffer[2 * (edge + 1) + 1] = sin((2 * M_PI/ edgeNum) * edge);
+    for(unsigned int edge = 0; edge < edgeNum; ++edge){
+        buffer[2 * (edge + 1)] =  cos((float)(2 * M_PI/ edgeNum) * edge);
+        buffer[2 * (edge + 1) + 1] = sin((float)(2 * M_PI/ edgeNum) * edge);
     }
 
-    for(int edge = 0; edge < edgeNum - 1; ++edge){
+    for(unsigned int edge = 0; edge < edgeNum - 1; ++edge){
         indexBufferData[3 * edge] = 0;
         indexBufferData[3 * edge + 1] = edge + 1;
         indexBufferData[3 * edge + 2] = edge + 2;
