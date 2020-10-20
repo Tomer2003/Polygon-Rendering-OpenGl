@@ -41,4 +41,15 @@ void Polygon::definePolygon(unsigned int edgeNum) {
 
     m_IndexBuffer = new IndexBuffer(indexBufferData, edgeNum * 3 * sizeof(unsigned int));
     m_IndexBuffer->bind();
+
+    delete buffer;
+    delete indexBufferData;
+}
+
+Polygon::~Polygon(){
+    delete m_VertexBuffer;
+    delete m_VertexAttribute;
+    delete m_VertexArray;
+    delete m_IndexBuffer;
+    delete m_Shader; 
 }

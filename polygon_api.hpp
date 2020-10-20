@@ -16,6 +16,8 @@ private:
 
 public:
     Polygon();
+    ~Polygon();
+    
     void definePolygon(unsigned int edges);
 };
 
