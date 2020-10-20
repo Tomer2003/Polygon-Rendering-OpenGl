@@ -1,17 +1,18 @@
 #include "polygon_api.hpp"
 # define M_PI 3.14159265358979323846
-#include <iostream>
+
 
 Polygon::Polygon() : m_IndexBuffer(nullptr), m_VertexBuffer(nullptr){
     m_VertexArray = new VertexArray;
     m_VertexAttribute = new VertexAttribute;
     m_Shader = new Shader("../../Resources/shaders/vertex.shader", "../../Resources/shaders/fragment.shader");
     m_Shader->bind();
-    m_Shader->setUniform4f("colors", 0.4f, 0.2f, 0.7f, 1.0f);
 }
 
 
-void Polygon::definePolygon(unsigned int edgeNum) {
+void Polygon::definePolygon(unsigned int edgeNum, float v1, float v2, float v3, float v4) {
+    m_Shader->setUniform4f("colors", v1, v2, v3, v4);
+
     float* buffer = new float[(edgeNum + 1) * 2];
     unsigned int* indexBufferData = new unsigned int[edgeNum * 3];
 

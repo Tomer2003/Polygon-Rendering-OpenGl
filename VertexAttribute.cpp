@@ -22,4 +22,3 @@ unsigned int VertexAttribute::getLayoutConter() const{
 unsigned int VertexAttribute::getStride() const{
     return m_stride;
 }
-
