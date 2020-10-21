@@ -1,7 +1,6 @@
 #include "polygon_api.hpp"
 # define M_PI 3.14159265358979323846
 
-
 Polygon::Polygon() : m_IndexBuffer(nullptr), m_VertexBuffer(nullptr){
     m_VertexArray = new VertexArray;
     m_VertexAttribute = new VertexAttribute;
@@ -10,7 +9,7 @@ Polygon::Polygon() : m_IndexBuffer(nullptr), m_VertexBuffer(nullptr){
 }
 
 
-void Polygon::definePolygon(unsigned int edgeNum, float v1, float v2, float v3, float v4) {
+void Polygon::bindPolygon(unsigned int edgeNum, float v1, float v2, float v3, float v4) {
     m_Shader->setUniform4f("colors", v1, v2, v3, v4);
 
     float* buffer = new float[(edgeNum + 1) * 2];

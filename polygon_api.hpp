@@ -15,8 +15,25 @@ private:
     Shader* m_Shader;
 
 public:
+    /**
+     * @brief Construct a new Polygon object
+     * 
+     */
     Polygon();
+    /**
+     * @brief Destroy the Polygon object
+     * 
+     */
     ~Polygon();
     
-    void definePolygon(unsigned int edges, float v1, float v2, float v3, float v4);
+    /**
+     * @brief The function define and bind polygon for drawing with glDrawElements
+     * 
+     * @param edges - number of edges of polygon
+     * @param v1 - R
+     * @param v2 - G
+     * @param v3 - B
+     * @param v4 - A
+     */
+    void bindPolygon(unsigned int edges, float v1, float v2, float v3, float v4);
 };

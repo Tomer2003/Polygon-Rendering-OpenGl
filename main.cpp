@@ -38,36 +38,8 @@ int main(void)
         exit(1);
     }
 
-  /* float buffer[] = {
-		-0.5, -0.5, 
-		-0.5, 0.5, 
-		0.5, -0.5, 
-        0.5, 0.5
-	};
-
-    unsigned int indexBufferData[] ={
-        0, 1, 2,
-        1, 2, 3
-    };
-
-    VertexBuffer vertexBuffer(buffer, sizeof(float) * 2 * 4);
-
-    VertexAttribute vertexAttrib;
-    vertexAttrib.addLayout<float>(2);
-
-    VertexArray vertexArray;
-    vertexArray.addBufferAndAttribute(vertexBuffer, vertexAttrib);
-    vertexArray.bind();
-
-    Shader shader("../../Resources/shaders/vertex.shader", "../../Resources/shaders/fragment.shader");
-    shader.bind();
-    shader.setUniform4f("colors", 0.4f, 0.2f, 0.7f, 1.0f);
-
-    IndexBuffer indexBuffer(indexBufferData, 2 * 3 * sizeof(unsigned int));
-    indexBuffer.bind();*/
-
     Polygon polygon;
-    polygon.definePolygon(100, 0.7, 0.6, 0.7, 1.0);
+    polygon.bindPolygon(3, 0.7, 0.6, 0.7, 1.0);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -76,7 +48,7 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
         //GLCALL(glDrawArrays(GL_TRIANGLES, 0, 3));
-        glDrawElements(GL_TRIANGLES, 3 * 100, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 3 * 3, GL_UNSIGNED_INT, 0);
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 

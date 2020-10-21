@@ -4,11 +4,11 @@
 VertexAttribute::VertexAttribute() : m_stride(0), m_layoutNumCounter(0) {}
 
 void VertexAttribute::bindLayout(unsigned int layoutNum) const{
-    GLCALL(glEnableVertexAttribArray(layoutNum));
+    glEnableVertexAttribArray(layoutNum);
 }
 
 void VertexAttribute::unBindLayout(unsigned int layoutNum) const{
-    GLCALL(glDisableVertexAttribArray(layoutNum));
+    glDisableVertexAttribArray(layoutNum);
 }
 
 std::vector<VertexLayout> VertexAttribute::getLayouts() const{
