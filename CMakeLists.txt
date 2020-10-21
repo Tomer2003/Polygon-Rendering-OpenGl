@@ -14,7 +14,7 @@ add_subdirectory(
     Resources/GLFW   
 )
 
-add_executable(tester main.cpp src/files_io.cpp src/vertexAttribute.cpp src/VertexBuffer.cpp src/VertexArray.cpp src/opengl_types.cpp src/shader.cpp src/IndexBuffer.cpp api_files/polygon_api.cpp)
+add_library(tester src/files_io.cpp src/vertexAttribute.cpp src/VertexBuffer.cpp src/VertexArray.cpp src/opengl_types.cpp src/shader.cpp src/IndexBuffer.cpp api_files/polygon_api.cpp)
 target_link_libraries(tester opengl32 glfw glew_s)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
