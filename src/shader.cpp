@@ -1,5 +1,4 @@
 #include "shader.hpp"
-#include "error_handle.hpp"
 #include "files_io.hpp"
 
 unsigned int Shader::getCompiledShader(const std::string& shaderSource, GLenum shaderType) const{

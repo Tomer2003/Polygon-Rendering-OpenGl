@@ -1,6 +1,5 @@
 
 #include "VertexBuffer.hpp"
-#include "error_handle.hpp"
 
 VertexBuffer::VertexBuffer(const void* vertexBufferData, unsigned int dataSize) : m_VrtexBufferData(vertexBufferData), m_DataSize(dataSize), m_RenderID(0) {
     glGenBuffers(1, &m_RenderID);

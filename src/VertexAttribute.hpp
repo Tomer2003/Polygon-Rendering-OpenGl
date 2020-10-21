@@ -1,5 +1,5 @@
 #pragma once
-#include "Resources/GLEW/include/GL/glew.h"
+#include "../Resources/GLEW/include/GL/glew.h"
 #include <vector>
 
 typedef struct VertexLayout{
@@ -84,7 +84,22 @@ public:
         m_stride += sizeof(unsigned int) * size;
     }
 
+    /**
+     * @brief The function return vector of VertexLayouts
+     * 
+     * @return std::vector<VertexLayout> - vector of VertexLayout
+     */
     std::vector<VertexLayout> getLayouts() const;
+    /**
+     * @brief The function return stride(the byte offset between consecutive generic vertex attributes)
+     * 
+     * @return unsigned int - stride(the byte offset between consecutive generic vertex attributes)
+     */
     unsigned int getStride() const;
+    /**
+     * @brief The function return VertexLayout number
+     * 
+     * @return unsigned int - VertexLayout number
+     */
     unsigned int getLayoutConter() const;
 };

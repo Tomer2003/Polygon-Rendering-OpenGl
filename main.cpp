@@ -1,13 +1,7 @@
 #include <iostream>
 #include "Resources/GLEW/include/GL/glew.h"
 #include "Resources/GLFW/include/GLFW/glfw3.h"
-#include "files_io.hpp"
-#include "VertexAttribute.hpp"
-#include "VertexArray.hpp"
-#include "shader.hpp"
-#include "error_handle.hpp"
-#include "IndexBuffer.hpp"
-#include "polygon_api.hpp"
+#include "api_files/polygon_api.hpp"
 
 int main(void)
 {

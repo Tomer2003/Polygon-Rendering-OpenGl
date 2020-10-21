@@ -1,9 +1,9 @@
 #pragma once
-#include "VertexArray.hpp"
-#include "VertexBuffer.hpp"
-#include "VertexAttribute.hpp"
-#include "shader.hpp"
-#include "IndexBuffer.hpp"
+#include "../src/VertexArray.hpp"
+#include "../src/VertexBuffer.hpp"
+#include "../src/VertexAttribute.hpp"
+#include "../src/shader.hpp"
+#include "../src/IndexBuffer.hpp"
 #include <math.h>
 
 class Polygon{

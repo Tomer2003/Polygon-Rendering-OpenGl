@@ -1,5 +1,5 @@
 #pragma once
-#include "Resources/GLEW/include/GL/glew.h"
+#include "../Resources/GLEW/include/GL/glew.h"
 #include "VertexAttribute.hpp"
 #include "VertexBuffer.hpp"
 #include "opengl_types.hpp"

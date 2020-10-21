@@ -1,5 +1,4 @@
 #include "VertexAttribute.hpp"
-#include "error_handle.hpp"
 
 VertexAttribute::VertexAttribute() : m_stride(0), m_layoutNumCounter(0) {}
 
