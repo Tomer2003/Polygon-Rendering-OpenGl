@@ -34,5 +34,5 @@
 #vscode files 
 build
 
-#glfw
-Resources/GLFW
+#vscode
+.vscode
